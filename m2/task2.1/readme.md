@@ -1,1 +1,1 @@
-![Screen1](Screen1.jpg)
+![Screen1](https://github.com/dmalyshok/DevOps_online_Kiev_2021Q4/blob/main/m2/task2.1/Screen1.JPG?raw=true)
