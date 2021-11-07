@@ -1,0 +1,28 @@
+Vagrant.configure("2") do |config|
+  config.vm.box = "centos/7"
+ 
+  config.vm.provider "libvirt" do |v|
+      v.memory = 1024
+      v.cpus = 2
+  end
+
+  config.vm.define "node1" do |node1|
+    node1.vm.hostname = "node1.local"
+    node1.vm.network "forwarded_port", guest: 80, host: 8080, protocol: "tcp"
+    node1.vm.provision "shell", inline: "
+        yum install nginx -y
+        systemctl start nginx && systemctl enable nginx
+    "
+  end
+
+  config.vm.define "node2" do |node2|
+    node2.vm.hostname = "node2.local"
+    node2.vm.network "forwarded_port", guest: 80, host: 8081, protocol: "tcp"
+    node2.vm.provision "shell", inline: "
+        yum install httpd -y
+        systemctl start httpd && systemctl enable httpd
+    "
+  end
+  
+  config.vm.provision :shell, :run => 'always', :path => "provision.sh", :privileged => true
+end
