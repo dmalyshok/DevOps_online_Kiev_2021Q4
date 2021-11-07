@@ -1,3 +1,12 @@
+1. What are the most popular hypervisors for infrastructure virtualization?
+ESXi, Hyper-V, Xen, KVM, Oracle VM
+
+2. Briefly describe the main differences of the most popular hypervisors.
+
+There are two types of hypervisors:
+Type 1 hypervisor: hypervisors run directly on the system hardware – A “bare metal” embedded hypervisor,
+Type 2 hypervisor: hypervisors run on a host operating system that provides virtualization services, such as I/O device support and memory management.
+
 ![Screen1](https://github.com/dmalyshok/DevOps_online_Kiev_2021Q4/blob/main/m2/task2.1/Screen1.JPG?raw=true)
 ![Screen2](https://github.com/dmalyshok/DevOps_online_Kiev_2021Q4/blob/main/m2/task2.1/Screen2.JPG?raw=true)
 ![Screen3](https://github.com/dmalyshok/DevOps_online_Kiev_2021Q4/blob/main/m2/task2.1/Screen3.JPG?raw=true)
