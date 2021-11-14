@@ -33,3 +33,6 @@
 ![Screen34](https://github.com/dmalyshok/DevOps_online_Kiev_2021Q4/blob/main/m2/task2.2/Screen34.JPG?raw=true)
 ![Screen35](https://github.com/dmalyshok/DevOps_online_Kiev_2021Q4/blob/main/m2/task2.2/Screen35.JPG?raw=true)
 ![Screen36](https://github.com/dmalyshok/DevOps_online_Kiev_2021Q4/blob/main/m2/task2.2/Screen36.JPG?raw=true)
+
+Link to CV:
+http://dmitry.malyshok.org.ua/
