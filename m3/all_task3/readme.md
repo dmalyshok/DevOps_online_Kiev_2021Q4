@@ -15,8 +15,3 @@
 ![Screen15](https://github.com/dmalyshok/DevOps_online_Kiev_2021Q4/blob/main/m3/all_task3/Screen3.4.3.JPG?raw=true)
 ![Screen16](https://github.com/dmalyshok/DevOps_online_Kiev_2021Q4/blob/main/m3/all_task3/Screen3.4.4.JPG?raw=true)
 ![Screen17](https://github.com/dmalyshok/DevOps_online_Kiev_2021Q4/blob/main/m3/all_task3/Screen3.4.5.JPG?raw=true)
-
-
-```{include} ISP1_EIGRP_task3.3.txt
-
-```{include} https://github.com/dmalyshok/DevOps_online_Kiev_2021Q4/blob/main/m3/all_task3/ISP1_EIGRP_task3.3.txt
