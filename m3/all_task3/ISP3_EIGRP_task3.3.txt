@@ -1,0 +1,24 @@
+interface GigabitEthernet0/0
+ ip address 7.20.86.1 255.255.255.0
+ duplex auto
+ speed auto
+!
+interface GigabitEthernet0/1
+ ip address 30.7.86.126 255.255.255.192
+ duplex auto
+ speed auto
+!
+interface GigabitEthernet0/2
+ ip address 30.7.86.190 255.255.255.192
+ duplex auto
+ speed auto
+!
+interface Vlan1
+ no ip address
+ shutdown
+!
+router eigrp 100
+ network 30.7.86.64 0.0.0.63
+ network 30.7.86.128 0.0.0.63
+ network 7.20.86.0 0.0.0.255
+ 
