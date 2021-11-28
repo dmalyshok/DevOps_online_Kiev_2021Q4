@@ -1,16 +1,19 @@
-PART 1
-
+##PART 1
+```
 sudo apt-get install mysql-server -y
-
+```
+```
 SHOW DATABASES;
 CREATE DATABASE devops;
 USE devops;
 CREATE TABLE students( id INT AUTO_INCREMENT PRIMARY KEY, surname VARCHAR(255) NOT NULL, surname VARCHAR(255) NOT NULL );
 CREATE TABLE tasks( id INT AUTO_INCREMENT PRIMARY KEY, name VARCHAR(255) NOT NULL, students_id INT NOT NULL, FOREIGN KEY (students_id) references students(id) );
 CREATE TABLE english( id INT AUTO_INCREMENT PRIMARY KEY, name VARCHAR(2) NOT NULL, english_id INT NOT NULL, FOREIGN KEY (english_id) references students(id) );
-
+```
+```
 INSERT INTO students (name,surname) values ('Petro','Zalivnuy'),('Oleg','Pechniy'),('Sergiy','Oltichniy'),('Olga','Cvetnaya');
-
+```
+```
 mysql> SELECT * FROM students;
 +----+--------+-----------+
 | id | name   | surname   |
@@ -21,11 +24,13 @@ mysql> SELECT * FROM students;
 |  4 | Olga   | Cvetnaya  |
 +----+--------+-----------+
 4 rows in set (0.01 sec)
-
+```
+```
 mysql> INSERT INTO tasks (name,students_id) values ('task3',1),('task4',2),('task4',3),('task5',4);
 Query OK, 4 rows affected (0.01 sec)
 Records: 4  Duplicates: 0  Warnings: 0
-
+```
+```
 mysql> SELECT * FROM tasks;
 +----+-------+-------------+
 | id | name  | students_id |
@@ -36,11 +41,13 @@ mysql> SELECT * FROM tasks;
 |  4 | task5 |           4 |
 +----+-------+-------------+
 4 rows in set (0.00 sec)
-
+```
+```
 mysql> INSERT INTO english (name,english_id) values ('A1',3),('A2',2),('B2',1),('C2',4);
 Query OK, 4 rows affected (0.01 sec)
 Records: 4  Duplicates: 0  Warnings: 0
-
+```
+```
 mysql> SELECT * FROM english;
 +----+------+------------+
 | id | name | english_id |
@@ -51,8 +58,8 @@ mysql> SELECT * FROM english;
 |  4 | C2   |          4 |
 +----+------+------------+
 4 rows in set (0.00 sec)
-
-
+```
+```
 mysql> SELECT * FROM students WHERE id = 1;
 +----+-------+----------+
 | id | name  | surname  |
@@ -60,8 +67,8 @@ mysql> SELECT * FROM students WHERE id = 1;
 |  1 | Petro | Zalivnuy |
 +----+-------+----------+
 1 row in set (0.00 sec)
-
-
+```
+```
 mysql> SELECT * FROM students WHERE id > 2;
 +----+--------+-----------+
 | id | name   | surname   |
@@ -70,7 +77,8 @@ mysql> SELECT * FROM students WHERE id > 2;
 |  4 | Olga   | Cvetnaya  |
 +----+--------+-----------+
 2 rows in set (0.00 sec)
-
+```
+```
 mysql> SELECT * FROM students WHERE name = 'Oleg';
 +----+------+---------+
 | id | name | surname |
@@ -78,7 +86,8 @@ mysql> SELECT * FROM students WHERE name = 'Oleg';
 |  2 | Oleg | Pechniy |
 +----+------+---------+
 1 row in set (0.00 sec)
-
+```
+```
 mysql> SELECT * FROM students WHERE NOT surname LIKE '%uy';
 +----+--------+-----------+
 | id | name   | surname   |
@@ -88,8 +97,8 @@ mysql> SELECT * FROM students WHERE NOT surname LIKE '%uy';
 |  4 | Olga   | Cvetnaya  |
 +----+--------+-----------+
 3 rows in set (0.00 sec)
-
-
+```
+```
 mysql> SELECT * FROM students WHERE surname LIKE '%uy';
 +----+-------+----------+
 | id | name  | surname  |
@@ -97,7 +106,8 @@ mysql> SELECT * FROM students WHERE surname LIKE '%uy';
 |  1 | Petro | Zalivnuy |
 +----+-------+----------+
 1 row in set (0.00 sec)
-
+```
+```
 mysql> SELECT * FROM tasks WHERE id > 3 AND students_id < 5;
 +----+-------+-------------+
 | id | name  | students_id |
@@ -457,7 +467,7 @@ mysql> SELECT * FROM db;
 +-----------+--------------------+---------------+-------------+-------------+-------------+-------------+-------------+-----------+------------+-----------------+------------+------------+-----------------------+------------------+------------------+----------------+---------------------+--------------------+--------------+------------+--------------+
 2 rows in set (0.00 sec)
 
-PART 2
+##PART 2
 
 dmalyshok@server:~$ mysqldump -u root -p devops > /home/dmalyshok/devops.sql
 Enter password:
@@ -622,7 +632,7 @@ mysql> SELECT * FROM tasks;
 +----+-------+------+-------------+
 6 rows in set (0.00 sec)
 
-![Screen1](https://github.com/dmalyshok/DevOps_online_Kiev_2021Q4/blob//m4/task4.1/Screen4.1.1.JPG?raw=true)
+![Screen1](https://github.com/dmalyshok/DevOps_online_Kiev_2021Q4/blob/main/m4/task4.1/Screen4.1.1.JPG?raw=true)
 
 dmalyshok@server:~$ mysql -h devops.cgryvglaxh4x.eu-central-1.rds.amazonaws.com -P 3306 -u root -p
 Enter password:
@@ -767,7 +777,7 @@ SET @@SESSION.SQL_LOG_BIN = @MYSQLDUMP_TEMP_LOG_BIN;
 
 
 
-PART 3.
+##PART 3.
 
 ![Screen1](https://github.com/dmalyshok/DevOps_online_Kiev_2021Q4/blob//m4/task4.1/Screen4.1.2.JPG?raw=true)
 
@@ -808,6 +818,6 @@ dmalyshok@server:~$ aws dynamodb batch-write-item --request-items file://Reply.j
     "UnprocessedItems": {}
 }
 
-![Screen1](https://github.com/dmalyshok/DevOps_online_Kiev_2021Q4/blob//m4/task4.1/Screen4.1.2.JPG?raw=true)
-![Screen1](https://github.com/dmalyshok/DevOps_online_Kiev_2021Q4/blob//m4/task4.1/Screen4.1.3.JPG?raw=true)
-![Screen1](https://github.com/dmalyshok/DevOps_online_Kiev_2021Q4/blob//m4/task4.1/Screen4.1.4.JPG?raw=true)
+![Screen1](https://github.com/dmalyshok/DevOps_online_Kiev_2021Q4/blob/main/m4/task4.1/Screen4.1.2.JPG?raw=true)
+![Screen1](https://github.com/dmalyshok/DevOps_online_Kiev_2021Q4/blob/main/m4/task4.1/Screen4.1.3.JPG?raw=true)
+![Screen1](https://github.com/dmalyshok/DevOps_online_Kiev_2021Q4/blob/main/m4/task4.1/Screen4.1.4.JPG?raw=true)
