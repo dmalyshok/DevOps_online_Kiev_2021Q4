@@ -383,8 +383,6 @@ mysql> DELETE FROM tasks WHERE id = 1;
 ERROR 1142 (42000): DELETE command denied to user 'task_moderator'@'localhost' for table 'tasks'
 mysql>
 
-
-
 mysql> use mysql
 Database changed
 mysql> SHOW TABLES;
@@ -453,9 +451,9 @@ mysql> SELECT * FROM db;
 | localhost | sys                | mysql.sys     | N           | N           | N           | N           | N           | N         | N          | N               | N          | N          | N                     | N                | N                | N              | N                   | N                  | N            | N          | Y            |
 +-----------+--------------------+---------------+-------------+-------------+-------------+-------------+-------------+-----------+------------+-----------------+------------+------------+-----------------------+------------------+------------------+----------------+---------------------+--------------------+--------------+------------+--------------+
 2 rows in set (0.00 sec)
-
+```
 ## PART 2
-
+```
 dmalyshok@server:~$ mysqldump -u root -p devops > /home/dmalyshok/devops.sql
 Enter password:
 dmalyshok@server:~$ ls /home/dmalyshok/
@@ -489,7 +487,6 @@ mysql> SHOW TABLES;
 | students         |
 +------------------+
 2 rows in set (0.01 sec)
-
 
 mysql> source /home/dmalyshok/devops.sql
 
@@ -618,9 +615,9 @@ mysql> SELECT * FROM tasks;
 | 10 | task4 |   10 |           6 |
 +----+-------+------+-------------+
 6 rows in set (0.00 sec)
-
+```
 ![Screen2](https://github.com/dmalyshok/DevOps_online_Kiev_2021Q4/blob/main/m4/task4.1/Screen4.1.2.JPG)
-
+```
 dmalyshok@server:~$ mysql -h devops.cgryvglaxh4x.eu-central-1.rds.amazonaws.com -P 3306 -u root -p
 Enter password:
 Welcome to the MySQL monitor.  Commands end with ; or \g.
@@ -763,11 +760,11 @@ SET @@SESSION.SQL_LOG_BIN = @MYSQLDUMP_TEMP_LOG_BIN;
 /*!40103 SET TIME_ZONE=@OLD_TIME_ZONE */;
 
 
-
+```
 ## PART 3.
-
+```
 ![Screen2](https://github.com/dmalyshok/DevOps_online_Kiev_2021Q4/blob/main/m4/task4.1/Screen4.1.2.JPG?raw=true)
-
+```
 dmalyshok@server:~$ wget https://docs.aws.amazon.com/amazondynamodb/latest/developerguide/samples/sampledata.zip
 --2021-11-28 13:06:57--  https://docs.aws.amazon.com/amazondynamodb/latest/developerguide/samples/sampledata.zip
 Resolving docs.aws.amazon.com (docs.aws.amazon.com)... 54.239.24.117
@@ -804,6 +801,6 @@ dmalyshok@server:~$ aws dynamodb batch-write-item --request-items file://Reply.j
 {
     "UnprocessedItems": {}
 }
-
+```
 ![Screen3](https://github.com/dmalyshok/DevOps_online_Kiev_2021Q4/blob/main/m4/task4.1/Screen4.1.3.JPG?raw=true)
 ![Screen4](https://github.com/dmalyshok/DevOps_online_Kiev_2021Q4/blob/main/m4/task4.1/Screen4.1.4.JPG?raw=true)
