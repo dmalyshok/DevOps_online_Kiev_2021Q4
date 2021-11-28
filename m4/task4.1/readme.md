@@ -616,7 +616,7 @@ mysql> SELECT * FROM tasks;
 +----+-------+------+-------------+
 6 rows in set (0.00 sec)
 ```
-![Screen2](https://github.com/dmalyshok/DevOps_online_Kiev_2021Q4/blob/main/m4/task4.1/Screen4.1.2.JPG)
+![Screen1](https://github.com/dmalyshok/DevOps_online_Kiev_2021Q4/blob/main/m4/task4.1/Screen4.1.1.JPG)
 ```
 dmalyshok@server:~$ mysql -h devops.cgryvglaxh4x.eu-central-1.rds.amazonaws.com -P 3306 -u root -p
 Enter password:
@@ -762,7 +762,7 @@ SET @@SESSION.SQL_LOG_BIN = @MYSQLDUMP_TEMP_LOG_BIN;
 
 ```
 ## PART 3.
-```
+
 ![Screen2](https://github.com/dmalyshok/DevOps_online_Kiev_2021Q4/blob/main/m4/task4.1/Screen4.1.2.JPG?raw=true)
 ```
 dmalyshok@server:~$ wget https://docs.aws.amazon.com/amazondynamodb/latest/developerguide/samples/sampledata.zip
