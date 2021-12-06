@@ -647,13 +647,13 @@ Run command
 
 scp -i "key.pem" ec2-user@1.2.3.4 "run your command"
 
-
+```
 ![Screen1](https://github.com/dmalyshok/DevOps_online_Kiev_2021Q4/blob/main/m5/task5.3/Screen1.JPG?raw=true)
 ![Screen2](https://github.com/dmalyshok/DevOps_online_Kiev_2021Q4/blob/main/m5/task5.3/Screen2.JPG?raw=true)
 ![Screen3](https://github.com/dmalyshok/DevOps_online_Kiev_2021Q4/blob/main/m5/task5.3/Screen3.JPG?raw=true)
 ![Screen4](https://github.com/dmalyshok/DevOps_online_Kiev_2021Q4/blob/main/m5/task5.3/Screen4.JPG?raw=true)
 ![Screen5](https://github.com/dmalyshok/DevOps_online_Kiev_2021Q4/blob/main/m5/task5.3/Screen5.JPG?raw=true)
-```
+
     2. Implement basic SSH settings to increase the security of the client-server connection (at least 
 ```
 dmalyshok@server:~$ cat /etc/ssh/sshd_config
@@ -745,9 +745,9 @@ The key's randomart image is:
     4. Implement port forwarding for the SSH client from the host machine to the guest Linux virtual machine behind NAT.
 ```
 Forward local port 22 to 2222 virtual machine
-
+```
 ![Screen6](https://github.com/dmalyshok/DevOps_online_Kiev_2021Q4/blob/main/m5/task5.3/Screen6.JPG?raw=true)
-
+```
 PS C:\Users\dmitry.malyshok\Desktop> ssh dmalyshok@127.0.0.1
 This is Server for Study
 dmalyshok@127.0.0.1's password:
@@ -766,7 +766,5 @@ Welcome to Ubuntu 20.04.3 LTS (GNU/Linux 5.4.0-90-generic x86_64)
     5*. Intercept (capture) traffic (tcpdump, wireshark) while authorizing the remote client on the server using ssh, telnet, rlogin. Analyze the result.
 ```
 sudo tcpdump -w /var/tmp/capture1.pcap
-
-![Screen7](https://github.com/dmalyshok/DevOps_online_Kiev_2021Q4/blob/main/m5/task5.3/Screen7.JPG?raw=true)
-
 ```
+![Screen7](https://github.com/dmalyshok/DevOps_online_Kiev_2021Q4/blob/main/m5/task5.3/Screen7.JPG?raw=true)
