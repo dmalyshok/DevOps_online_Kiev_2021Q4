@@ -1,6 +1,6 @@
 ## Task2
 
-  1) Analyze the structure of the /etc/passwd and /etc/group file, what fields are present in it, what users exist on the system? Specify several pseudo-users, how to define them?
+    1) Analyze the structure of the /etc/passwd and /etc/group file, what fields are present in it, what users exist on the system? Specify several pseudo-users, how to define them?
 ```
 dmalyshok@server:~$ head -3 /etc/passwd
 root:x:0:0:Malyshok,Main Room,111-11111,111-1111:/root:/bin/bash
@@ -49,7 +49,7 @@ Mail news games, Apache FTP, MySQL and sshd are related to the process of Linux 
 Pseudo users usually do not need or cannot log in to the system
 There can be no host directory
 ```
-  2) What are the uid ranges? What is UID? How to define it?
+    2) What are the uid ranges? What is UID? How to define it?
 ```
 UID : User Identifier
 UID (User identifier)is a number that assigned by Linux to every user of the system. UIDs are stored in the /etc/passwd
@@ -70,7 +70,7 @@ uid=1001(dmalyshok) gid=1001(dmalyshok) groups=1001(dmalyshok),27(sudo)
 dmalyshok@server:~$ id devops
 uid=1002(devops) gid=1002(devops) groups=1002(devops)
 ```
-  3) What is GID? How to define it?
+    3) What is GID? How to define it?
 ```
 GID (Group Identifier)
 A group is a collection of users having similar permissions. Like a user who is identified by the UID, a group is identified by the GID in a system. GID 0 is reserved for the root group.
@@ -92,7 +92,7 @@ dmalyshok@server:~$ id -G dmalyshok
 dmalyshok@server:~$ id
 uid=1001(dmalyshok) gid=1001(dmalyshok) groups=1001(dmalyshok),27(sudo)
 ```
-  4) How to determine belonging of user to the specific group?
+    4) How to determine belonging of user to the specific group?
 ```
 dmalyshok@server:~$ id -g dmalyshok
 1001
@@ -101,7 +101,7 @@ dmalyshok@server:~$ id -G dmalyshok
 dmalyshok@server:~$ groups dmalyshok
 dmalyshok : dmalyshok sudo
 ```
-  5) What are the commands for adding a user to the system? What are the basic parameters required to create a user?
+    5) What are the commands for adding a user to the system? What are the basic parameters required to create a user?
 ```
 Syntax:
 useradd [options] name_of_the_user
@@ -137,7 +137,7 @@ sudo useradd -p test_password test_user
 10. To display help
 sudo useradd --help
 ```
-  6) How do I change the name (account name) of an existing user?
+    6) How do I change the name (account name) of an existing user?
 ```
 sudo usermod -l newUsername oldUsername
 sudo usermod -d /home/newHomeDir -m newUsername
@@ -150,7 +150,7 @@ dmalyshok@server:~$ sudo usermod -d /home/malyshok -m malyshok
 dmalyshok@server:~$ grep -w '^malyshok' /etc/passwd
 malyshok:x:1003:1003::/home/malyshok:/bin/bash
 ```
-  7) What is skell_dir? What is its structure?
+    7) What is skell_dir? What is its structure?
 ```
 The skel directory
 Directory /etc/skel/ (skel is derived from the “skeleton”) is used to initiate home directory when a user is first created. A sample layout of “skeleton” user files is as shown below:
@@ -169,7 +169,7 @@ dmalyshok@server:~$ cat /etc/default/useradd | grep SKEL
 # The SKEL variable specifies the directory containing "skeletal" user
 # SKEL=/etc/skel
 ```
-  8) How to remove a user from the system (including his mailbox)?
+    8) How to remove a user from the system (including his mailbox)?
 ```
 userdel Command Syntax
 The syntax for the userdel command is as follows:
@@ -204,7 +204,7 @@ dmalyshok@server:~$ ls /home
 devops  dmalyshok  dmlshk
 dmalyshok@server:~$ grep -w 'malyshok' /etc/passwd
 ```
-  9) What commands and keys should be used to lock and unlock a user account?
+    9) What commands and keys should be used to lock and unlock a user account?
 ```
 Lock:
 dmalyshok@server:~$ sudo passwd -l devops
@@ -222,7 +222,7 @@ passwd: password expiry information changed.
 dmalyshok@server:~$ sudo grep -w 'devops' /etc/shadow
 devops:$6$3S.G/UM4j379S/a4$3Gqzo5BqRDEHs1PYUX06UtoU4Zud4I3yrI0s0QvyKRantYNzHSQLuFQw3L4HPYKpIiryugqczKYYd1yRVx5ui.:18960:0:99999:7:::
 ```
-  10) How to remove a user's password and provide him with a password-free login for subsequent password change?
+    10) How to remove a user's password and provide him with a password-free login for subsequent password change?
 ```
 dmalyshok@server:~$ sudo chage -l devops
 Last password change                                    : Nov 29, 2021
@@ -251,7 +251,7 @@ dmalyshok@server:~$ su devops
 You are required to change your password immediately (administrator enforced)
 New password:
 ```
-  11) Display the extended format of information about the directory, tell about the information columns displayed on the terminal.
+    11) Display the extended format of information about the directory, tell about the information columns displayed on the terminal.
 ```
 dmalyshok@server:~$ ls -lahinF
 total 156K
@@ -269,7 +269,7 @@ Using -F option in the ls command will include the’/’ Character in the end o
 -h - human view
 -i - print the index number of each file
 ```
-  12) What access rights exist and for whom (i. e., describe the main roles)? Briefly describe the acronym for access rights.
+    12) What access rights exist and for whom (i. e., describe the main roles)? Briefly describe the acronym for access rights.
 ```
 dmalyshok@server:~$ ls -ln
 total 72
@@ -320,7 +320,7 @@ User / Group / Other rwx Mode Symbols	Octal Equivalent
 -rw-r--r--	                                644
 -rw-------	                                600
 ```
-  13) What is the sequence of defining the relationship between the file and the user?
+    13) What is the sequence of defining the relationship between the file and the user?
 ```
 dmalyshok@server:~$ touch file_permission.txt
 dmalyshok@server:~$ ls -l file_permission.txt
@@ -344,7 +344,7 @@ uid=1001(dmalyshok) gid=1001(dmalyshok) groups=1001(dmalyshok),27(sudo)
 
 1001 1001 - owner file
 ```
-  14) What commands are used to change the owner of a file (directory), as well as the mode of access to the file? Give examples, demonstrate on the terminal.
+    14) What commands are used to change the owner of a file (directory), as well as the mode of access to the file? Give examples, demonstrate on the terminal.
 ```
 chown new-owner  filename
 
@@ -393,7 +393,7 @@ dmalyshok@server:~$ chmod g-wx file_permission.txt
 dmalyshok@server:~$ ls -ln file_permission.txt
 -rwxr--r-- 1 1001 1001 0 Dec  4 11:23 file_permission.txt
 ```
-  15) What is an example of octal representation of access rights? Describe the umask command.
+    15) What is an example of octal representation of access rights? Describe the umask command.
 ```
 Permissions                 Symbolic	    Binary	  Octal
 read, write, and execute	rwx	            111	        7
@@ -502,7 +502,7 @@ dmalyshok@server:~$ echo 1 > ch_umask.txt
 -bash: ch_umask.txt: Permission denied
 dmalyshok@server:~$ umask 0002
 ```
-  16) Give definitions of sticky bits and mechanism of identifier substitution. Give an example of files and directories with these attributes.
+    16) Give definitions of sticky bits and mechanism of identifier substitution. Give an example of files and directories with these attributes.
 ```
 Special Mode Bits
 The setuid, setgid, and sticky bit can be set using chmod where
@@ -617,7 +617,7 @@ rm: cannot remove 'delete.me': Operation not permitted
 
 dmalyshok@server:~/my_dir$ rm delete.me
 ```
-  17) What file attributes should be present in the command script?
+    17) What file attributes should be present in the command script?
 ```
 Define each file attributes
 The detailed meaning of these attributes according to the manual page is:
