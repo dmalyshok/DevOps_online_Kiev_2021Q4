@@ -1,6 +1,7 @@
 ## Part1
-1. How many states could has a process in Linux?
 
+  1. How many states could has a process in Linux?
+```
 In Linux, a process is an instance of executing a program or command. While these processes exist, they’ll be in one of the five possible states:
 
 Running or Runnable (R)
@@ -8,9 +9,9 @@ Uninterruptible Sleep (D)
 Interruptable Sleep (S)
 Stopped (T)
 Zombie (Z)
-
-2. Examine the pstree command. Make output (highlight) the chain (ancestors) of the current process.
-
+```
+  2. Examine the pstree command. Make output (highlight) the chain (ancestors) of the current process.
+``
 In a Linux system, “pstree” helps visualize processes hierarchy which is a less complex way to display running processes.
 The “pstree” command is one of the Linux commands that merge branches through square brackets and display the process as a tree. The root of the tree could be “init” or “pid”.
 
@@ -64,9 +65,9 @@ dmalyshok@server:~$ pstree dmalyshok
 sshd───bash───pstree
 
 systemd───(sd-pam)
-
-3. What is a proc file system? 
-
+```
+  3. What is a proc file system? 
+```
 Proc file system (procfs) is virtual file system created on fly when system boots and is dissolved at time of system shut down.
 It contains useful information about the processes that are currently running, it is regarded as control and information center for kernel.
 The proc file system also provides communication medium between kernel space and user space.
@@ -107,10 +108,9 @@ file	description
 /proc/scsi	information about any devices connected via a SCSI or RAID controller
 /proc/tty	information about the current terminals
 /proc/version	containing the Linux kernel version, distribution number, gcc version number (used to build the kernel) and any other pertinent information relating to the version of the kernel currently running
-
-
-4. Print information about the processor (its type, supported technologies, etc.).
-
+```
+  4. Print information about the processor (its type, supported technologies, etc.).
+```
 dmalyshok@server:~$ cat /proc/cpuinfo
 processor       : 0
 vendor_id       : GenuineIntel
@@ -138,7 +138,6 @@ clflush size    : 64
 cache_alignment : 64
 address sizes   : 43 bits physical, 48 bits virtual
 power management:
-
 
 dmalyshok@server:~$ lscpu
 Architecture:                    x86_64
@@ -175,9 +174,9 @@ Vulnerability Spectre v2:        Mitigation; Enhanced IBRS, IBPB conditional, RS
 Vulnerability Srbds:             Mitigation; TSX disabled
 Vulnerability Tsx async abort:   Not affected
 Flags:                           fpu vme de pse tsc msr 
-
-5. Use the ps command to get information about the process. The information should be as follows: the owner of the process, the arguments with which the process was launched for execution, the group owner of this process, etc. 
-
+```
+  5. Use the ps command to get information about the process. The information should be as follows: the owner of the process, the arguments with which the process was launched for execution, the group owner of this process, etc. 
+```
 ps command is used to report the process status. ps is the short name for Process Status.
 
 dmalyshok@server:~$ ps o user:12,pid,gid,%cpu,%mem,vsz,rss,tty,stat,start,time,comm,args 941
@@ -189,9 +188,9 @@ USER             PID   GID %CPU %MEM    VSZ   RSS TT       STAT  STARTED     TIM
 root               1     0  0.1  0.5 102028 11152 ?        Ss   20:14:21 00:00:07 systemd         /sbin/init maybe-ubiquity
 root               2     0  0.0  0.0      0     0 ?        S    20:14:21 00:00:00 kthreadd        [kthreadd]
 root               3     0  0.0  0.0      0     0 ?        I<   20:14:21 00:00:00 rcu_gp          [rcu_gp]
-
-6. How to define kernel processes and user processes?
-
+```
+  6. How to define kernel processes and user processes?
+```
 Every process has a unique identifier which it is represented by, called as the process ID(pid). The first process that the kernel runs is called the idle process and has the pid 0. The first process that runs after booting is called the init process and has the pid 1.
 
 User-space processes have its own virtual address space.
@@ -230,9 +229,9 @@ dmalyshok@server:~$ sudo ps -N --ppid=2 --pid=2
     722 ?        00:00:00 systemd-timesyn
     733 ?        00:00:00 VGAuthService
     734 ?        00:00:15 vmtoolsd
-
-7. Print the list of processes to the terminal. Briefly describe the statuses of the processes. What condition are they in, or can they be arriving in?
-
+```
+  7. Print the list of processes to the terminal. Briefly describe the statuses of the processes. What condition are they in, or can they be arriving in?
+```
 PROCESS STATE CODES
        Here are the different values that the s, stat and state output specifiers (header "STAT" or "S") will display to describe the state of a process:
        D    uninterruptible sleep (usually IO)
@@ -256,9 +255,9 @@ USER             PID   GID %CPU %MEM    VSZ   RSS TT       STAT  STARTED     TIM
 www-data         941    33  0.0  0.2 752816  4616 ?        Sl   20:14:51 00:00:00 apache2         /usr/sbin/apache2 -k start
 
 Sl - interruptible sleep (waiting for an event to complete), is a session leader
-
-8. Display only the processes of a specific user. 
-
+```
+  8. Display only the processes of a specific user. 
+```
 dmalyshok@server:~$ ps -u dmalyshok
     PID TTY          TIME CMD
    1819 ?        00:00:00 systemd
@@ -288,15 +287,14 @@ MiB Swap:   2048.0 total,   2048.0 free,      0.0 used.   1204.5 avail Mem
    1947 dmalysh+  20   0    8408   5476   3656 S   0.0   0.3   0:00.42 bash
    5622 dmalysh+  20   0    9272   3924   3352 T   0.0   0.2   0:00.08 top
 
-
 dmalyshok@server:~$ pstree dmalyshok
 sshd───bash─┬─pstree
             └─top
 
 systemd───(sd-pam)
-
-9. What utilities can be used to analyze existing running tasks (by analyzing the help for the ps command)?
-
+```
+  9. What utilities can be used to analyze existing running tasks (by analyzing the help for the ps command)?
+```
 pstree, ps, top see task 8.
 
 dmalyshok@server:~$ pgrep -l apach
@@ -305,9 +303,9 @@ dmalyshok@server:~$ pgrep -l apach
 942 apache2
 
 htop, atop
-
-10. What information does top command display?
-
+```
+  10. What information does top command display?
+```
 The top command displays the list of running processes in the order of decreasing CPU usage. This means that the most resource-heavy processes appear at the top of the list:
 
 dmalyshok@server:~$ top -U dmalyshok
@@ -348,9 +346,9 @@ N: Sort the list by PID.
 r: Change the nice value (priority) of a process by providing the PID.
 z: Change the output color to highlight running processes.
 q: Quit the command interface.
-
-11. Display the processes of the specific user using the top command.
-
+```
+  11. Display the processes of the specific user using the top command.
+```
 dmalyshok@server:~$ top -U dmalyshok
 top - 22:38:56 up  2:24,  2 users,  load average: 0.30, 0.22, 0.11
 Tasks: 205 total,   2 running, 202 sleeping,   1 stopped,   0 zombie
@@ -361,9 +359,9 @@ MiB Swap:   2048.0 total,   2048.0 free,      0.0 used.   1204.5 avail Mem
     PID USER      PR  NI    VIRT    RES    SHR S  %CPU  %MEM     TIME+ COMMAND
    5666 dmalysh+  20   0    9272   3804   3232 R   1.0   0.2   0:00.05 top
 
-
-12. What interactive commands can be used to control the top command? Give a couple of examples.
-
+```
+  12. What interactive commands can be used to control the top command? Give a couple of examples.
+```
 Once in top...
 
 P <- Sort by CPU usage
@@ -382,9 +380,9 @@ N: Sort the list by PID.
 r: Change the nice value (priority) of a process by providing the PID.
 z: Change the output color to highlight running processes.
 q: Quit the command interface.
-
-13. Sort the contents of the processes window using various parameters (for example, the amount of processor time taken up, etc.)
-
+```
+  13. Sort the contents of the processes window using various parameters (for example, the amount of processor time taken up, etc.)
+```
 top -o +%CPU
 top -o +%MEM
 top -o +TIME
@@ -399,9 +397,9 @@ You can change the sort field in the interactive top window with the < and > key
 P <- Sort by CPU usage
 M <- Sort by MEM usage
 Or F and choose CPU or MEM
-
-14. Concept of priority, what commands are used to set priority?
-
+```
+  14. Concept of priority, what commands are used to set priority?
+```
 Linux Kernel schedules the process and allocates CPU time accordingly for each of them. But, when one of your process requires higher priority to get more CPU time, you can use nice and renice command 
 The process scheduling priority range is from -20 to 19. We call this as nice value.
 
@@ -453,9 +451,9 @@ F S UID          PID    PPID  C PRI  NI ADDR SZ WCHAN  STIME TTY          TIME C
 0 S dmalysh+    7721    7720  0  85   5 -  2136 do_wai 06:21 pts/0    00:00:00 -bash
 0 R dmalysh+   20673    7721 99  85   5 -  1369 -      07:21 pts/0    00:04:18 yes
 0 R dmalysh+   20791    7721  0  85   5 -  2223 -      07:26 pts/0    00:00:00 ps -fl
-
-15. Can I change the priority of a process using the top command? If so, how? 
-
+```
+  15. Can I change the priority of a process using the top command? If so, how? 
+```
 Renice by pressing r. You will be prompted for the Process ID (PID) of the process you wish to renice. The default PID is the first process (one consuming the most resources).
 
 top - 07:47:22 up  4:26,  2 users,  load average: 1.08, 1.01, 0.90
@@ -483,11 +481,9 @@ MiB Swap:   2048.0 total,   2046.0 free,      2.0 used.   1109.9 avail Mem
   21708   21603  1001 dmalysh+ dmalysh+ pts/0      3:55.03  48.0   0.0 R yes
   21814   21603  1001 dmalysh+ dmalysh+ pts/0      0:00.05   2.0   0.2 R top
   21104   21024  1001 dmalysh+ dmalysh+ ?          0:01.25   1.0   0.3 S sshd
-
-
-16. Examine the kill command. How to send with the kill command
-process control signal? Give an example of commonly used signals.
-
+```
+  16. Examine the kill command. How to send with the kill command process control signal? Give an example of commonly used signals.
+```
 Kill command in Linux (located in /bin/kill), is a built-in command which is used to terminate processes manually. kill command sends a signal to a process which terminates the process. If the user doesn’t specify any signal which is to be sent along with kill command then default TERM signal is sent that terminates the process.
 
 The most commonly used signals are:
@@ -567,9 +563,9 @@ dmalyshok@server:~$ kill -STOP 22443
 dmalyshok@server:~$ kill -CONT 22443
    PID    PPID   UID USER     RUSER    TTY          TIME+  %CPU  %MEM S COMMAND
   22443   21603  1001 dmalysh+ dmalysh+ pts/0      7:20.08  98.1   0.0 R yes
-
-17. Commands jobs, fg, bg, nohup. What are they for? Use the sleep, yes command to demonstrate the process control mechanism with fg, bg.
-
+```
+  17. Commands jobs, fg, bg, nohup. What are they for? Use the sleep, yes command to demonstrate the process control mechanism with fg, bg.
+```
 Some times we require to control jobs/commands on how they are running ie either foreground or background on the screen. Commands which run longer duration and do not require any manual intervention are sent to background so that we can run other commands in foreground. In this post we will see how to manage process/commands to run in background or foreground by using some inbuilt commands like fg and bg
 
 dmalyshok@server:~$ jobs
@@ -592,7 +588,6 @@ dmalyshok@server:~$ jobs -l
 [1]+ 24589 Running                 sleep 900 &
 
 The NOHUP command runs the command specified by the command parameter and any associated arg parameter, ignoring all the SIGHUP signals. Use the NOHUP command to run the program in the background after logging out. To run the NOHUP command in the background, add & (indicate the symbol of "and") to the tail of the command.
-
 
 dmalyshok@server:~$ nohup ping 127.0.0.1 &
 [1] 23996
@@ -623,11 +618,11 @@ So to summarize:
 disown removes the process from the shell's job control, but it still leaves it connected to the terminal. One of the results is that the shell won't send it a SIGHUP. Obviously, it can only be applied to background jobs, because you cannot enter it when a foreground job is running.
 
 nohup disconnects the process from the terminal, redirects its output to nohup.out and shields it from SIGHUP. One of the effects (the naming one) is that the process won't receive any sent SIGHUP. It is completely independent from job control and could in principle be used also for foreground jobs (although that's not very useful).
+```
+##Part2
 
-
-## Part2
-1. Check the implementability of the most frequently used OPENSSH commands in the MS Windows operating system. (Description of the expected result of the commands + screenshots: command – result should be presented)
-
+  1. Check the implementability of the most frequently used OPENSSH commands in the MS Windows operating system. (Description of the expected result of the commands + screenshots: command – result should be presented)
+```
 The normal suite of of functions are included with the Windows 10 port,
 
 ssh.exe, which is the SSH client used from the user's local system
@@ -658,9 +653,9 @@ scp -i "key.pem" ec2-user@1.2.3.4 "run your command"
 ![Screen3](https://github.com/dmalyshok/DevOps_online_Kiev_2021Q4/blob/main/m5/task5.3/Screen3.JPG?raw=true)
 ![Screen4](https://github.com/dmalyshok/DevOps_online_Kiev_2021Q4/blob/main/m5/task5.3/Screen4.JPG?raw=true)
 ![Screen5](https://github.com/dmalyshok/DevOps_online_Kiev_2021Q4/blob/main/m5/task5.3/Screen5.JPG?raw=true)
-
-2. Implement basic SSH settings to increase the security of the client-server connection (at least 
-
+```
+  2. Implement basic SSH settings to increase the security of the client-server connection (at least 
+```
 dmalyshok@server:~$ cat /etc/ssh/sshd_config
 
 PermitEmptyPasswords no
@@ -674,9 +669,9 @@ AllowUsers dmalyshok devops
 X11Forwarding no
 
 dmalyshok@server:~$ sudo service sshd restart
-
-3. List the options for choosing keys for encryption in SSH. Implement 3 of them.
-
+```
+  3. List the options for choosing keys for encryption in SSH. Implement 3 of them.
+```
 dmalyshok@server:~$ ssh-keygen
 Generating public/private rsa key pair.
 Enter file in which to save the key (/home/dmalyshok/.ssh/id_rsa):
@@ -746,9 +741,9 @@ The key's randomart image is:
 |         +oB*Bo..|
 |          +==o+. |
 +----[SHA256]-----+
-
-4. Implement port forwarding for the SSH client from the host machine to the guest Linux virtual machine behind NAT.
-
+```
+  4. Implement port forwarding for the SSH client from the host machine to the guest Linux virtual machine behind NAT.
+```
 Forward local port 22 to 2222 virtual machine
 
 ![Screen6](https://github.com/dmalyshok/DevOps_online_Kiev_2021Q4/blob/main/m5/task5.3/Screen6.JPG?raw=true)
@@ -767,10 +762,11 @@ Welcome to Ubuntu 20.04.3 LTS (GNU/Linux 5.4.0-90-generic x86_64)
   System load:  0.79               Processes:              219
   Usage of /:   38.2% of 18.57GB   Users logged in:        1
   Memory usage: 43%                IPv4 address for ens33: 192.168.233.128
-
-5*. Intercept (capture) traffic (tcpdump, wireshark) while authorizing the remote client on the server using ssh, telnet, rlogin. Analyze the result.
-
+```
+  5*. Intercept (capture) traffic (tcpdump, wireshark) while authorizing the remote client on the server using ssh, telnet, rlogin. Analyze the result.
+```
 sudo tcpdump -w /var/tmp/capture1.pcap
 
 ![Screen7](https://github.com/dmalyshok/DevOps_online_Kiev_2021Q4/blob/main/m5/task5.3/Screen7.JPG?raw=true)
 
+```
