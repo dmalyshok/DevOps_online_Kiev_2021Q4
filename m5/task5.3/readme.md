@@ -11,7 +11,7 @@ Stopped (T)
 Zombie (Z)
 ```
     2. Examine the pstree command. Make output (highlight) the chain (ancestors) of the current process.
-``
+```
 In a Linux system, “pstree” helps visualize processes hierarchy which is a less complex way to display running processes.
 The “pstree” command is one of the Linux commands that merge branches through square brackets and display the process as a tree. The root of the tree could be “init” or “pid”.
 
