@@ -667,6 +667,7 @@ ClientAliveInterval 300
 ClientAliveCountMax 2
 AllowUsers dmalyshok devops
 X11Forwarding no
+PasswordAuthentication no
 
 dmalyshok@server:~$ sudo service sshd restart
 ```
