@@ -123,6 +123,7 @@ malyshok@vm1malyshok:~$ ./parser_apachelog example_log.log
 5. What time did site get the most requests?
 6. What search bots have accessed the site? (UA + IP)
 ```
+```
 You chose  1 answer
      29 94.78.95.154
 You chose  2 answer
@@ -158,6 +159,8 @@ malyshok@vm1malyshok:~$ ./parser_apachelog apache_logs.txt
 4. What non-existent pages were clients referred to?
 5. What time did site get the most requests?
 6. What search bots have accessed the site? (UA + IP)1
+```
+```
 You chose  1 answer
      62 157.55.39.250
 You chose  2 answer
@@ -248,6 +251,7 @@ malyshok@vm1malyshok:~$ crontab -e
 # m h  dom mon dow   command
 */1 * * * *  /home/malyshok/sync_dir_script /home/malyshok/src/. /home/malyshok/dst
 ```
+
 ```
 create two directories
 mkdir /home/malyshok/src/ /home/malyshok/dst/
@@ -341,4 +345,5 @@ dst/
             └── 4
 
 12 directories, 2 files
+
 ```
