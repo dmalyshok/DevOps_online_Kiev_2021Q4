@@ -1,0 +1,46 @@
+#!/bin/bash
+fun_ping()
+{
+  	ping -c 1 $1 > /dev/null
+  	[ $? -eq 0 ] && echo Find live host IP: $i is up and hostname is $(host $i | awk '{print $5}')
+}
+
+fun_scan_port()
+{
+for PORT in {20..443}
+do
+	timeout 1 bash -c "</dev/tcp/$(($2))/$PORT &>/dev/null" 2>/dev/null
+	[ $? -eq 0 ] && echo "port $PORT is open !"
+done
+}
+
+if [ "$1" = --all ];
+then
+echo "You choose parameter to scan all IP, $1"
+for i in 10.20.1.{1..254}
+do
+fun_ping $i & disown
+done
+
+
+elif [[ "$1" = --target && -z "$2" ]];
+then
+echo -n "Enter IP adress for scan:"
+read IP
+echo "You choose ip adress for scan $IP"
+fun_scan_port
+
+elif [[ "$1" = --target && -n "$2" ]];
+then
+echo "You choose parameter to scan target ports, $1 , $2"
+fun_scan_port
+
+elif [ -z "$1" ];
+then
+echo "Choose parameter --all or --target"
+echo "--all key displays the IP addresses and symbolic names of all hosts in the current subnet"
+echo "--target key displays a list of open system TCP ports"
+
+else
+echo "Bad parametrs or check/choose parametrs --all or --target"
+fi

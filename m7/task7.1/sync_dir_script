@@ -1,0 +1,58 @@
+#!/bin/bash
+# C. Create a data backup script that takes the following data as parameters:
+# 1. Path to the syncing directory.
+# 2. The path to the directory where the copies of the files will be stored.
+# In case of adding new or deleting old files, the script must add a corresponding entry to the log file indicating the time,
+# type of operation and file name. 
+# [The command to run the script must be added to crontab with a run frequency of one minute]
+#
+# mkdir -p {A,b}/1/2/{3,4}
+#
+
+if [ -z "$1" ] || [ -z "$2" ]; then
+	echo "You have failed chose two parameter."
+	echo "USAGE: ./sync_dir_script ABS_PATH_DIRECTORY-TO-BACKUP/. ABS_BACKUP-DIRECTORY"
+      echo "EXAMPLE: ./sync_dir_script /home/malyshok/src/. /home/malyshok/dst"
+	echo "Reminder: 1 parameter: path to the syncing directory. 2 parameter: path to the directory where the copies of the files will be stored"
+	exit 255;
+fi
+
+# Start log block
+find $1 -type f | sed 's/\.\///g' > ch_new_files
+find $1 -type d | sed 's/\.\///g'> ch_new_dir
+
+CH_FILE=$(diff -u ch_old_files ch_new_files | grep -e +/ -e -/ | sed 's/-/Delete file: /g; s/+/Add new file: /g;') 
+CH_DIR=$(diff -u ch_old_dir ch_new_dir | grep -e +/ -e -/ | sed 's/-/Delete dir: /g; s/+/Add new dir: /g;')
+
+echo $TIMESTAMP
+
+if [ -z "$CH_FILE" ]
+then
+      echo "CH_FILE is NULL"
+else
+      echo "$CH_FILE" | while IFS= read -r line; do printf '[%s] %s\n' "$(date '+%Y-%m-%d %H:%M:%S')" "$line"; done >> logfile
+fi
+
+if [ -z "$CH_DIR" ]
+then
+      echo "CH_DIR is NULL"
+else 
+      echo "$CH_DIR" | while IFS= read -r line; do printf '[%s] %s\n' "$(date '+%Y-%m-%d %H:%M:%S')" "$line"; done  >> logfile
+fi
+
+find $1 -type f | sed 's/\.\///g' > ch_old_files
+find $1 -type d | sed 's/\.\///g' > ch_old_dir
+# End log block
+
+#echo "Chek new file or directory"
+#RESULT=$(diff -rq $1 $2 | awk '{print$3,$4}' | sed 's/: /\//')
+#if [ -z $RESULT ]; then
+#  echo New file not detected
+#else
+#  echo Detect new file $(diff -rq $1 $2 | awk '{print$3,$4}' | sed 's/: /\//') >> logfile
+#fi
+
+cp -pur $1 $2
+echo Copy file succesfully!
+#echo $(diff -rq $1 $2 | awk '/Only in \/home\/malyshok\/dst/{print substr($3, 1, length($3)-1) "/" $4}')
+rm -rf $(diff -rq $1 $2 | awk '{print$3,$4}' | sed 's/: /\//')
