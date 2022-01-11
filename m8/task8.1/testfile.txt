@@ -1,0 +1,4 @@
+Name|Phone
+Vasya;099
+Kolya;123
+Olya;456
